@@ -25,11 +25,11 @@ export class AdminLoginComponent {
 
   //admin login method
   adminLogin() {
-    if (this.adminLoginData.emailId == null) {
-      this.errorMessage = "Enter Username";
+    if (this.adminLoginData.emailId == null || this.adminLoginData.emailId.trim() == '') {
+      this.errorMessage = "Enter EmailId";
       return
     }
-    if (this.adminLoginData.password == null) {
+    if (this.adminLoginData.password == null || this.adminLoginData.password.trim() == '') {
       this.errorMessage = "Enter Password";
       return
     }
