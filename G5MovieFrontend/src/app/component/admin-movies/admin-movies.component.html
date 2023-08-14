@@ -1,0 +1,157 @@
+<!-- Movies Navbar -->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div>
+        <img routerLink="/products" class="logo"
+          src="https://cdn2.iconfinder.com/data/icons/arts-and-music/96/Movie_camera-512.png" alt="navbarImage"
+          style="height: 5vh; width: 5vw; margin-bottom: 6vh; margin-left: 5vw;" /><span
+          style="font-weight: bolder; font-size: 25px;">G5 Movies</span>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto" style="font-family: 'Montserrat', sans-serif">
+          <li class="nav-item">
+            <button class="btn bthHead active">
+              Manage Movies
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" (click)="clickAddMovie()" data-toggle="modal" data-target="#exampleModal"
+              class="btn bthHead ">
+              Add movies
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn bthHead" routerLink="/manageCustomer">
+              Manage Customer
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn bthHead" routerLink="/managePurchase">
+              Manage Purchases
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn bthHead float-right" (click)="adminLogout()">
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <hr />
+  </div>
+  
+  <!-- Table For Movies -->
+  <div>
+    <div class="container admind">
+      <span class="text-center prodLogo">Movies List</span>
+    </div>
+    <table class="table table-striped admind">
+      <thead>
+        <tr>
+          <th style="width: 17%">
+            movie Name 
+          </th>
+          <th style="width: 20%">Description</th>
+          <th >Durations</th>
+          <th >category</th>
+          <th >price </th>
+          <th >Availabilty</th>
+          <th style="width: 15%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of allMovies">
+          <td>{{ product.movieName }}</td>
+          <td>{{ product.movieDescription }}</td>
+          <td value="true">{{ product.movieDuration }}</td>
+          <td class="makecenter">{{ product.movieActionType }}</td>
+          <td class="makeCenter">₹{{ product.movieTicketPrice }}</td>
+          <td class="makeCenter">
+            {{product.movieAvilable}}
+          </td>
+          <td style="padding-left: 4.4vw;">
+            <mat-icon (click)="onMovieEdit(product)" type="button" data-toggle="modal" data-target="#exampleModal"> border_color</mat-icon>
+            <mat-icon (click)="deleteMovie(product)" type="button" style="margin-left: 2vw; color: rgb(164, 62, 62);">restore_from_trash</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Add/Edit Movie Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title float-left" id="exampleModalLabel">Movies Details</span>
+          <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <p *ngIf="message != ''">{{ message }}</p>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="form-group">
+              <label for="movieName" class="col-form-label"> Movie Name</label>
+              <input type="text" formControlName="movieName" class="form-control" id="movieName" required />
+            </div>
+            <div class="form-group">
+              <label for="movieDescription" class="col-form-label">Description</label>
+              <input type="text" formControlName="movieDescription" class="form-control" id="movieDescription" required />
+            </div>
+            <div class="form-group">
+              <label for="movieDuration" class="col-form-label">Duration</label>
+              <input type="text" formControlName="movieDuration" class="form-control" id="movieDuration" required />
+            </div>
+            <div class="form-group">
+              <label for="movieActionType" class="col-form-label">Category</label>
+              <select type="text" name="movieActionType" formControlName="movieActionType" class="form-control" id="movieActionType" required>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Historical">Historical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="movieTicketPrice" class="col-form-label">Price</label>
+              <input type="text" formControlName="movieTicketPrice" class="form-control" id="movieTicketPrice" required />
+            </div>
+            <div class="form-group">
+              <label for="movieRating" class="col-form-label">Rating</label>
+              <input type="text" formControlName="movieRating" class="form-control" id="movieRating" required />
+            </div>
+            <div class="form-group">
+              <label for="movieAvilable" class="form-check-label">Availabilty</label>
+              <div class="form-check">
+                <input type="radio" value="true" formControlName="movieAvilable" name="movieAvilable" class="form-check-input" id="yes" />
+                <label class="form-check-label" for="movieAvilable"> Enable </label>
+                <input style="margin-left: 30px" type="radio" value="false" formControlName="movieAvilable" name="movieAvilable"
+                  class="form-check-input" id="no" />
+                <label style="margin-left: 48px" class="form-check-label" for="movieAvilable">
+                  Disable
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="movieImagePath" class="col-form-label">Image Link</label>
+              <input type="text" formControlName="movieImagePath" class="form-control" id="movieImagePath" required />
+            </div>
+          </form>
+        </div>
+        
+        <div class="modal-footer">
+          <p *ngIf="message != ''" class="text-left">{{ message }}</p>
+          <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" *ngIf="showAdd" (click)="addmovie()" class="btn btn-primary">
+            Add
+          </button>
+          <button type="button" *ngIf="showUpdate" (click)="updateMovie()" class="btn btn-primary">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

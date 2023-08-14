@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Admin } from 'src/app/model/admin';
 import { AdminServiceService } from 'src/app/service/admin-service.service';
 
 @Component({
@@ -10,15 +8,15 @@ import { AdminServiceService } from 'src/app/service/admin-service.service';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent {
-
-  formValue !: FormGroup;
-  errorMessage: String = '';
+  //admin login data
   adminLoginData = {
     emailId: '',
     password: ''
   }
+  //store error message
+  errorMessage: String = '';
   //strore login input boolean value
-  auth: any;
+  adminAuth: any;
 
   constructor(private adminService: AdminServiceService, private router: Router) { }
 
@@ -35,15 +33,14 @@ export class AdminLoginComponent {
     }
 
     this.adminService.adminLogin(this.adminLoginData).subscribe(data => {
-      this.auth = data;
-      if (this.auth == true) {
+      this.adminAuth = data;
+      if (this.adminAuth == true) {
+        this.router.navigate(['/adminMovies']);
         console.log("Success login admin")
       } else {
         console.log("Try again login admin")
         this.errorMessage = "Username or password incorrect"
       }
     })
-
   }
-
 }
