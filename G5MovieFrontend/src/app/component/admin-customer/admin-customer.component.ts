@@ -27,6 +27,7 @@ export class AdminCustomerComponent implements OnInit {
   getCustomers() {
     this.customerService.getCustomers().subscribe((data) => {
       this.allCustomers = data;
+      console.log(data)
     });
   }
 

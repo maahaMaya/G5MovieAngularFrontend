@@ -1,0 +1,42 @@
+.navSec a:hover{
+    color: #bf1e2e;
+     cursor: pointer;
+ }
+ 
+ a{
+     color: rgb(42, 36, 36);;
+ }
+ 
+ .form-control{
+     border-radius: 3px;
+     width: 350px;
+     margin-left: 50px;
+     margin-top: 10px;
+ }
+ 
+ .navbar{
+     font-family: 'Montserrat', sans-serif;
+ }
+ 
+ /* matCardMovie */
+ .movie-card {
+     width: 20vw;
+     height: 20vh;
+     margin-bottom: 5vh;
+ }
+ 
+ .movieCardBox{
+    margin-top: 30vh;
+     height: 100%;
+     display: flex;
+     flex-flow: wrap;
+     align-content: space-around;
+     justify-content: space-around; 
+ }
+ 
+ .movie-card{
+     height: 70%;
+     border: 1px solid black;
+ }
+ 
+ 

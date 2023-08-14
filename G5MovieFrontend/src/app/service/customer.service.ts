@@ -15,7 +15,7 @@ export class CustomerService {
   }
 
   customerLogin(customerLoginData: any): Observable<Object> {
-    return this.httpClient.get(`${this.baseURL}/login`, customerLoginData);
+    return this.httpClient.post(`${this.baseURL}/login`, customerLoginData);
   }
 
   getCustomers(): Observable<Customer[]> {

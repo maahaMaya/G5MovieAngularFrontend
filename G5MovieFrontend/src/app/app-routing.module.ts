@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './component/admin-login/admin-login.component';
 import { AdminMoviesComponent } from './component/admin-movies/admin-movies.component';
 import { AdminCustomerComponent } from './component/admin-customer/admin-customer.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'movie', pathMatch: 'full' },
+  { path: 'movie', component: DashboardComponent },
   { path: 'admin', component: AdminLoginComponent },
   { path: 'adminMovies', component: AdminMoviesComponent },
   { path: 'manageCustomer', component: AdminCustomerComponent }

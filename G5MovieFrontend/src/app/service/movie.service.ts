@@ -10,37 +10,37 @@ export class MovieService {
 
   private baseURL = "http://localhost:9093/api/movie";
   constructor(private httpClient: HttpClient) { }
-  
 
-  public getMovieById(id : number) : Observable<Movie> {
+
+  public getMovieById(id: number): Observable<Movie> {
     return this.httpClient.get<Movie>(`${this.baseURL}/${id}`);
   }
 
-  public getMovieSearch(keyword:string):Observable<Movie[]>{
-    return this.httpClient.get<Movie[]>(`${this.baseURL}/search/${keyword}`);
+  public getMovieSearch(searchKeyword: string): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(`${this.baseURL}/search/${searchKeyword}`);
   }
 
-  getDrama():Observable<Movie[]>{
-    return this.httpClient.get<Movie[]>(`${this.baseURL}/searchMovieByAction/Drama`);
+  public searchMovieByAction(searchKeyword: string): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(`${this.baseURL}/searchMovieByAction/${searchKeyword}`);
   }
 
-  getFullMovieList():Observable<Movie[]>{
+  getFullMovieList(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(`${this.baseURL}/viewAllMovie`);
   }
 
-  addMovie(Movie:Movie):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}/addMovie`,Movie);
+  addMovie(Movie: Movie): Observable<Object> {
+    return this.httpClient.post(`${this.baseURL}/addMovie`, Movie);
   }
 
-  updateMovie(Movie:Movie):Observable<Object>{
-    return this.httpClient.put<Movie>(`${this.baseURL}/updateMovie`,Movie);
+  updateMovie(Movie: Movie): Observable<Object> {
+    return this.httpClient.put<Movie>(`${this.baseURL}/updateMovie`, Movie);
   }
 
-  deleteMovie(id:number):Observable<Movie>{
+  deleteMovie(id: number): Observable<Movie> {
     return this.httpClient.delete<Movie>(`${this.baseURL}/deleteMovieById/${id}`);
   }
 
-  searchMovie(keyword:any):Observable<Movie[]>{
-    return this.httpClient.get<Movie[]>(`${this.baseURL}/searchMovie/${keyword}`);
+  searchMovie(searchKeyword: any): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(`${this.baseURL}/searchMovie/${searchKeyword}`);
   }
 }

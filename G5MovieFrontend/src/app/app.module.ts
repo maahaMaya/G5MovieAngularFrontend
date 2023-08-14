@@ -13,13 +13,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminMoviesComponent } from './component/admin-movies/admin-movies.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminCustomerComponent } from './component/admin-customer/admin-customer.component';
+import { HeaderNavbarComponent } from './component/header-navbar/header-navbar.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { MovieComponent } from './component/movie/movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLoginComponent,
     AdminMoviesComponent,
-    AdminCustomerComponent
+    AdminCustomerComponent,
+    HeaderNavbarComponent,
+    DashboardComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
