@@ -110,8 +110,8 @@
                         </div>
                         <div class="md-form form-group mb-2">
                             <i class="fas fa-user prefix grey-text"> Full Name</i>
-                            <input type="text" formControlName="fullName" id="orangeForm-name" class="form-control validate"
-                                placeholder="Full Name" />
+                            <input type="text" formControlName="fullName" id="orangeForm-name"
+                                class="form-control validate" placeholder="Full Name" />
                         </div>
                         <div class="md-form form-group mb-2">
                             <i class="fas fa-phone prefix grey-text"> Contact Number</i>
@@ -132,24 +132,24 @@
 
 
     <!-- Active/Previous Order -->
-    <!-- <div class="modal" id="activeOrders">
+    <div class="modal" id="activeOrders">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content"> -->
-    <!-- Modal Header -->
-    <!-- <div class="modal-header">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
                     <h2 class="modal-title">Orders of {{customerName}}</h2>
                     <button type="button" class="close" data-dismiss="modal">
                         &times;
                     </button>
-                </div> -->
+                </div>
 
-    <!-- Modal body -->
-    <!-- <div class="modal-body">
+                <!-- Modal body -->
+                <div class="modal-body">
                     <div *ngIf="activeOrders.length != 0">
                         <table class="table">
                             <thead class="thead">
                                 <tr>
-                                    <th>movie Name</th>
+                                    <th>Order Id</th>
                                     <th>Quantity</th>
                                     <th>Cost</th>
                                     <th>Purchase Data</th>
@@ -157,12 +157,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let pur of activeOrders">
-                                    <td>{{ pur.productname }}</td>
-                                    <td>{{ pur.quantity }}</td>
-                                    <td>{{ pur.totalcost }}</td>
-                                    <td>{{ pur.dop }}</td>
-                                    <td>{{ pur.transactionid }}</td>
+                                <tr *ngFor="let order of activeOrders">
+                                    <td>{{ order.oid }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.price }}</td>
+                                    <td>{{ order.currentDate }}</td>
+                                    <td>{{ order.transactionId }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -175,5 +175,5 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </header>

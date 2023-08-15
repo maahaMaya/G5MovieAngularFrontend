@@ -1,57 +1,60 @@
 <div class="container">
-    <div class="container d-flex" style="margin: 1vw;">
-      <!-- Search Box -->
-      <div style="margin-left: -6vw; ">
-        <input type="text" class="form-control" name="searchKey" [(ngModel)]="searchKeyword" (ngModelChange)="SearchMovie()"
-          placeholder="Search Product"  style="border: 1px solid rgb(106, 69, 37); border-radius: 4%;"/>
-      </div>
-  
-      <!-- Search DropDown -->
-      <div class="container d-flex" style="margin-left: 40vw; width: 4vw;">
-        <nav class="navbar navbar-expand-lg navbar-success col-9">
-          <div class="dropdown show">
-            <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="width: 15vw;">
-              Sorting Movie
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
-              <div class="navSec">
-                <a (click)=" getmovie()" id="allProducts" class="navbar-brand">All Products</a>
-              </div>
-              <div class="navSec">
-                <a (click)="searchMovieByAction('Drama')" id="Drama" class="navbar-brand" >Drama</a>
-              </div>
-              <div class="navSec">
-                <a (click)="searchMovieByAction('Comedy')" id="Comedy" class="navbar-brand">Comedy</a>
-              </div>
-              <div class="navSec">
-                <a (click)="searchMovieByAction('Historical')" id="Historical" class="navbar-brand">Historical</a>
-              </div>
-              <div class="navSec">
-                <a (click)="searchMovieByAction('Thriller')" id="Thriller" class="navbar-brand">Thriller</a>
-              </div>
+  <div class="container d-flex" style="margin: 1vw;">
+    <!-- Search Box -->
+    <div style="margin-left: -6vw; ">
+      <input type="text" class="form-control" name="searchKey" [(ngModel)]="searchKeyword"
+        (ngModelChange)="SearchMovie()" placeholder="Search Product"
+        style="border: 1px solid rgb(106, 69, 37); border-radius: 4%;" />
+    </div>
+
+    <!-- Search DropDown -->
+    <div class="container d-flex" style="margin-left: 40vw; width: 4vw;">
+      <nav class="navbar navbar-expand-lg navbar-success col-9">
+        <div class="dropdown show">
+          <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="width: 15vw;">
+            Sorting Movie
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="navSec">
+              <a (click)=" getmovie()" id="allProducts" class="navbar-brand">All Products</a>
+            </div>
+            <div class="navSec">
+              <a (click)="searchMovieByAction('Drama')" id="Drama" class="navbar-brand">Drama</a>
+            </div>
+            <div class="navSec">
+              <a (click)="searchMovieByAction('Comedy')" id="Comedy" class="navbar-brand">Comedy</a>
+            </div>
+            <div class="navSec">
+              <a (click)="searchMovieByAction('Historical')" id="Historical" class="navbar-brand">Historical</a>
+            </div>
+            <div class="navSec">
+              <a (click)="searchMovieByAction('Thriller')" id="Thriller" class="navbar-brand">Thriller</a>
             </div>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </div>
   </div>
-  
-  <!-- Movie Box -->
-  <div class="movieCardBox">
-    <mat-card class="movie-card" *ngFor="let movie of movies" >
-      <img mat-card-image [src]="movie.movieImagePath" alt="movieImage" [ngStyle]="{height:'330px'}">
-      <mat-card-content class="movie-card-details">
-        <p>Name: {{movie.movieName}}</p>
-        <p>Price: ₹{{movie.movieTicketPrice }}</p>
-        <p>Cast: {{movie.movieDescription}}</p>
-        <p>Duration: {{movie.movieDuration}} </p>
-        <button  *ngIf="movie.movieAvilable === true" class="align-self-end mt-auto btn addcart btn-primary" (click)="addToCart(movie)" id="addToCart"style="width: 95%; margin-left: 0.1vw;">
-          Book Now
-        </button>
-        <button  *ngIf="movie.movieAvilable === false" class="align-self-end mt-auto btn addcart btn-primary"  id="addToCart"style="width: 95%; margin-left: 0.1vw;">
-          Bsssssw
-        </button>
-      </mat-card-content>
-    </mat-card>
-  </div>
+</div>
+
+<!-- Movie Box -->
+<div class="movieCardBox">
+  <mat-card class="movie-card" *ngFor="let movie of movies">
+    <img mat-card-image [src]="movie.movieImagePath" alt="movieImage" [ngStyle]="{height:'330px'}">
+    <mat-card-content class="movie-card-details">
+      <p>Name: {{movie.movieName}}</p>
+      <p>Price: ₹{{movie.movieTicketPrice }}</p>
+      <p>Cast: {{movie.movieDescription}}</p>
+      <p>Duration: {{movie.movieDuration}} </p>
+      <button *ngIf="movie.movieAvilable === true" class="align-self-end mt-auto btn addcart btn-primary"
+        (click)="addToCart(movie)" id="addToCart" style="width: 95%; margin-left: 0.1vw;">
+        Book Now
+      </button>
+      <button *ngIf="movie.movieAvilable === false" class="align-self-end mt-auto btn addcart btn-danger" id="addToCart"
+        style="width: 95%; margin-left: 0.1vw;">
+        Box Office Full
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/model/cart';
 import { Customer } from 'src/app/model/customer';
 import { Movie } from 'src/app/model/movie';
+import { Ordered } from 'src/app/model/ordered';
 import { CartService } from 'src/app/service/cart.service';
 import { CustomerService } from 'src/app/service/customer.service';
 import { MovieService } from 'src/app/service/movie.service';
+import { OrderedService } from 'src/app/service/ordered.service';
 
 @Component({
   selector: 'app-header-navbar',
@@ -26,15 +28,15 @@ export class HeaderNavbarComponent implements OnInit {
   movieList: any;
   cart: Cart = new Cart(0, 1, 0, new Movie(1, 'Movie Name', 'Description', 'Duration', 10 , 100, 'Available',  'Available',true));
   products: Cart[] = [];
-  //activeOrders: Purchase[] = [];
+  activeOrders: Ordered[] = [];
   totalItem: number = 0;
-  customerName? : string;
+  customerName! : string;
 
   constructor(
     private cartService: CartService,
     private movieService: MovieService,
     private customerService: CustomerService,
-    //private purchaseService: PurchaseService,
+    private orderService : OrderedService,
     private formbuilder: FormBuilder,
     private router: Router
   ) { this.customer = new Customer('', '', '', ''); }
@@ -123,19 +125,17 @@ export class HeaderNavbarComponent implements OnInit {
   }
 
   getActiveOrders() {
-    // const email: string | null = sessionStorage.getItem('cust_email');
-    // if (email) {
-    //   this.purchaseService.getCustomerOrders(email).subscribe((data) => {
-    //     this.activeOrders = data;
-    //   });
-    // }
+    const emailId: String | null = sessionStorage.getItem('customerEmail');
+    this.orderService.getCustomerOrder(emailId).subscribe((data) => {
+      this.activeOrders = data;
+      console.log(data)
+    });
   }
 
   // @Input() customerLoginMessages? : any;
   // ngOnChanges(changes: SimpleChanges) {
   //   this.customerLoginMessage = this.customerLoginMessages;
   // }
-
 }
 
 

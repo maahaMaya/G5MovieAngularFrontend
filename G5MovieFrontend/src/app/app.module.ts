@@ -17,6 +17,8 @@ import { HeaderNavbarComponent } from './component/header-navbar/header-navbar.c
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MovieComponent } from './component/movie/movie.component';
 import { CartComponent } from './component/cart/cart.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { OrderSuccessComponent } from './component/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CartComponent } from './component/cart/cart.component';
     HeaderNavbarComponent,
     DashboardComponent,
     MovieComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,
