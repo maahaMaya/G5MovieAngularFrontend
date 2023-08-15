@@ -46,11 +46,11 @@
         <p>Price: ₹{{movie.movieTicketPrice }}</p>
         <p>Cast: {{movie.movieDescription}}</p>
         <p>Duration: {{movie.movieDuration}} </p>
-        <button *ngIf="login == 0" class=" mt-auto btn addcart btn-info" (click)="showToLogin()" style="width: 98%;">
-          Book Movie Ticket
+        <button  *ngIf="movie.movieAvilable === true" class="align-self-end mt-auto btn addcart btn-primary" (click)="addToCart(movie)" id="addToCart"style="width: 95%; margin-left: 0.1vw;">
+          Book Now
         </button>
-        <button *ngIf="login == 1" class="align-self-end mt-auto btn addcart btn-primary" (click)="addToCart(movie)" id="addToCart"style="width: 95%; margin-left: 0.1vw;">
-          Book
+        <button  *ngIf="movie.movieAvilable === false" class="align-self-end mt-auto btn addcart btn-primary"  id="addToCart"style="width: 95%; margin-left: 0.1vw;">
+          Bsssssw
         </button>
       </mat-card-content>
     </mat-card>

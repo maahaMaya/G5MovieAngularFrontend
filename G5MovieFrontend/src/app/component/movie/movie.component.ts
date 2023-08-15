@@ -11,9 +11,7 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class MovieComponent implements OnInit {
   searchKeyword: string = '';
-  login: number = 1;
   movies: Movie[] = [];
-
 
   constructor(
     private movieService: MovieService,
@@ -32,12 +30,15 @@ export class MovieComponent implements OnInit {
   }
 
   addToCart(movie: Movie) {
-    // Create a new instance of Cart with appropriate arguments
+    if(sessionStorage.getItem('customerEmail') == null || sessionStorage.getItem('customerEmail') == ''){
+      alert("Please Login...")
+      return;
+    }
     const cartItem = new Cart(0, 1, movie.movieTicketPrice, movie);
 
     this.cartService.addToCart(cartItem).subscribe((data) => {
       console.log(data);
-      alert("Produc is added to cart Successfully")
+      alert("Movie is added to cart Successfully")
     });
 
   }
@@ -59,10 +60,6 @@ export class MovieComponent implements OnInit {
         console.log(data)
       })
     }
-  }
-
-  showToLogin() {
-    alert("Login Please.....")
   }
 }
 

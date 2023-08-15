@@ -1,0 +1,79 @@
+<app-header-navbar [customerLoginMessage]="customerLoginMessage"></app-header-navbar>
+<ng-container *ngIf="carts.length != 0">
+    <div class="container" style="margin-top: 3vh;">
+        <div class="card-table">
+            <div class="card-product">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Movie Image</th>
+                            <th>Movie Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of carts; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; border-radius: 6px;"
+                                    src="{{ cart.movie.movieImagePath }}" alt="" />
+                            </td>
+                            <td>{{ cart.movie.movieName }}</td>
+                            <td style="width: 12%">₹{{ cart.movie.movieTicketPrice }}</td>
+                            <td style="width: 12%">
+                                <span class="quantityControl" (click)="lessOneCart(cart)">-</span><span
+                                    class="border quantity">{{ cart.quantity }}</span><span class="quantityControl"
+                                    (click)="addOneCart(cart)">+</span>
+                            </td>
+                            <td style="width: 12%">₹{{ cart.price }}</td>
+                            <td>
+                                <button class="btn">
+                                    <i class="fas fa-trash-alt" (click)="deleteCartItem(cart.id)" id="del_item"
+                                        style="color: red;"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button routerLink="/movie" class="btn btn-warning" id="goto_cart">
+                                    Shop More
+                                </button>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <strong>Total Price :₹{{ grandTotal }}</strong><br />
+                            </td>
+                            <td>
+                                <button routerLink="/paymentGateway" class="btn btn-success" id="checkout">
+                                    CheckOut
+                                </button>
+                            </td>
+
+                            <td></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- For Empty Cart -->
+<ng-container *ngIf="carts.length == 0">
+    <div class="container">
+        <div class="center">
+            <img src="../../assets/images/popcorn.png" style="height: 150px; width: 150px;" alt="" />
+            <h3>Cart is empty</h3>
+            <button routerLink="/movie" class="btn btn-primary" id="to_cart_page">
+                Book Now
+            </button>
+        </div>
+    </div>
+</ng-container>

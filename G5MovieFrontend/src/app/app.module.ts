@@ -16,6 +16,7 @@ import { AdminCustomerComponent } from './component/admin-customer/admin-custome
 import { HeaderNavbarComponent } from './component/header-navbar/header-navbar.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MovieComponent } from './component/movie/movie.component';
+import { CartComponent } from './component/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MovieComponent } from './component/movie/movie.component';
     AdminCustomerComponent,
     HeaderNavbarComponent,
     DashboardComponent,
-    MovieComponent
+    MovieComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

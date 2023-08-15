@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/model/cart';
@@ -14,7 +14,7 @@ import { MovieService } from 'src/app/service/movie.service';
   styleUrls: ['./header-navbar.component.scss']
 })
 export class HeaderNavbarComponent implements OnInit {
-  login?: number = 0;
+  @Input() customerLoginMessage?: any = 0;
   message: string = '';
   formValue!: FormGroup;
   customer: Customer = new Customer('', '', '', '');
@@ -24,7 +24,7 @@ export class HeaderNavbarComponent implements OnInit {
     password: ''
   };
   movieList: any;
-  cart: Cart = new Cart(0, 1, 0, new Movie(1, 'Movie Name', 'Description', 'Duration', 10 , 100, 'Available',  'Available','image.jpg'));
+  cart: Cart = new Cart(0, 1, 0, new Movie(1, 'Movie Name', 'Description', 'Duration', 10 , 100, 'Available',  'Available',true));
   products: Cart[] = [];
   //activeOrders: Purchase[] = [];
   totalItem: number = 0;
@@ -51,6 +51,13 @@ export class HeaderNavbarComponent implements OnInit {
       password: [''],
       phoneNumber: ['']
     });
+
+    if(sessionStorage.getItem('customerEmail') === null || sessionStorage.getItem('customerEmail') === ''){
+      this.customerLoginMessage = 0;
+    }
+    else{
+      this.customerLoginMessage = 1;
+    }
   }
 
   addCustomer() {
@@ -93,7 +100,7 @@ export class HeaderNavbarComponent implements OnInit {
     this.customerService.customerLogin(this.customerLoginData).subscribe((data) => {
       this.auth = data;
       if (this.auth === true) {
-        this.login = 1;
+        this.customerLoginMessage = 1;
         this.customerName = this.customerLoginData.emailId;
         sessionStorage.setItem('customerEmail', this.customerLoginData.emailId);
         let ref = document.getElementById('Lcancel');
@@ -107,11 +114,12 @@ export class HeaderNavbarComponent implements OnInit {
   }
 
   CustomerLogout() {
-    this.login = 0;
     // this.cartService.deleteAllCart().subscribe((data) => {
     //   console.log('cart empty');
     // });
-    sessionStorage.setItem('customerEmail', '');
+    sessionStorage.clear();
+    this.customerLoginMessage = 0;
+    this.router.navigate(['/movie']);
   }
 
   getActiveOrders() {
@@ -122,6 +130,12 @@ export class HeaderNavbarComponent implements OnInit {
     //   });
     // }
   }
+
+  // @Input() customerLoginMessages? : any;
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.customerLoginMessage = this.customerLoginMessages;
+  // }
+
 }
 
 

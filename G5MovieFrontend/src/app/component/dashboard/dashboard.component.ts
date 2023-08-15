@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Cart } from 'src/app/model/cart';
-import { Movie } from 'src/app/model/movie';
-import { CartService } from 'src/app/service/cart.service';
-import { MovieService } from 'src/app/service/movie.service';
+import { Component, OnChanges, Input, SimpleChanges  } from '@angular/core';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,4 +8,5 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class DashboardComponent {
   
+
 }

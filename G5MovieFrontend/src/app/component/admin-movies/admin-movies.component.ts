@@ -15,7 +15,7 @@ export class AdminMoviesComponent implements OnInit {
   public moviesAfterSort!: Movie[];
 
   formValue!: FormGroup;
-  movieModelObject: Movie = new Movie(0, '', '', '', 0, 0, '', '', '');
+  movieModelObject: Movie = new Movie(0, '', '', '', 0, 0, '', '', true);
   showAdd = false;
   showUpdate = false;
   message = '';

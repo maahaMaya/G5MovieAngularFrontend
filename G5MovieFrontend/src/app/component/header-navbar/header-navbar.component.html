@@ -3,14 +3,14 @@
         <div class="container">
             <!-- Navbar Logo -->
             <div class="navbar-brand align-item-center d-flex">
-                <img routerLink="/products" class="logo"
+                <img routerLink="/movie" class="logo"
                     src="https://cdn2.iconfinder.com/data/icons/arts-and-music/96/Movie_camera-512.png"
                     alt="navbarImage" style="height: 5vh; width: 5vw; margin-bottom: 5vh; margin-left: -4vw;" /><span
                     style="font-weight: bolder; font-size: 25px; margin-top: 1.6vh;">G5 Movies</span>
             </div>
 
             <!-- Customer Before Login -->
-            <div *ngIf="login == 0" class="text-right" style="margin-right: -5vw;">
+            <div *ngIf="customerLoginMessage == 0" class="text-right" style="margin-right: -5vw;">
                 <!-- Login -->
                 <button class="btn btnMain" type="button" data-toggle="modal" data-target="#registerModal"
                     id="custRegister">
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Customer After Login  -->
-            <div *ngIf="login == 1" class="text-right" style="margin-right: -4vw;">
+            <div *ngIf="customerLoginMessage == 1" class="text-right" style="margin-right: -4vw;">
 
                 <!-- GetPrevoiusOrder -->
                 <button class="btn btnMain" (click)="getActiveOrders()" type="button" data-toggle="modal"
@@ -32,7 +32,7 @@
                 </button>
 
                 <!-- Connect To Cart -->
-                <button *ngIf="login == 1" routerLink="cart" class="btn cart" id="cart">
+                <button *ngIf="customerLoginMessage == 1" routerLink="/cart" class="btn cart" id="cart">
                     <i style="font-size: 25px; color: rgb(236, 242, 243)" class="fas fa-shopping-cart"></i>
                 </button>
 

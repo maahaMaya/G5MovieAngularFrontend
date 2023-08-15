@@ -29,11 +29,11 @@ export class CartService {
     return this.httpClient.delete<Cart>(`${this.baseURL}/deleteCart/${id}`);
   }
 
-  minusInCart(id: any, cart: Cart): Observable<Object> {
+  minusOneInCart(cart: Cart): Observable<Object> {
     return this.httpClient.put<Cart>(`${this.baseURL}/minusInCart`, cart);
   }
 
-  addInCart(id: any, cart: Cart): Observable<Object> {
+  addOneInCart(cart: Cart): Observable<Object> {
     return this.httpClient.put<Cart>(`${this.baseURL}/addInCart`, cart);
   }
 }

@@ -8,7 +8,7 @@ export class Movie {
         public movieTicketPrice: number,
         public movieImagePath: String,
         public movieActionType: String ,
-        public movieAvilable: string,
+        public movieAvilable: Boolean,
         
       ) {}
 }
