@@ -1,0 +1,64 @@
+<!-- Manage Custome Navbar -->
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div>
+      <img routerLink="/products" class="logo"
+        src="https://cdn2.iconfinder.com/data/icons/arts-and-music/96/Movie_camera-512.png" alt="navbarImage"
+        style="height: 5vh; width: 5vw; margin-bottom: 6vh; margin-left: 5vw;" /><span
+        style="font-weight: bolder; font-size: 25px;">G5 Movies</span>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" style="font-family: 'Montserrat', sans-serif">
+        <li class="nav-item">
+          <button class="btn bthHead" routerLink="/adminMovies">
+            Manage Movies
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn bthHead" routerLink="/manageCustomer">
+            Manage Customer
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn bthHead active" routerLink="/viewAllOrder">
+            view Purchases
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn bthHead float-right" (click)="adminLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <hr />
+</div>
+
+<!-- All Order Table -->
+<div>
+  <div class="container prodLogo">
+    <span class="text-center" style="color: black;">Ordered History</span>
+  </div>
+  <div class="container">
+    <table class="table table-striped table-bordered" style="color: rgb(30, 41, 51)">
+      <thead>
+        <tr>
+          <th>Order Id</th>
+          <th>Quantity</th>
+          <th>Cost</th>
+          <th>Purchase Data</th>
+          <th>Transaction Id</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of activeOrders">
+          <td>{{ order.oid }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.price }}</td>
+          <td>{{ order.currentDate }}</td>
+          <td>{{ order.transactionId }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

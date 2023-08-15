@@ -19,6 +19,7 @@ import { MovieComponent } from './component/movie/movie.component';
 import { CartComponent } from './component/cart/cart.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { OrderSuccessComponent } from './component/order-success/order-success.component';
+import { AdminOrderHistoryComponent } from './component/admin-order-history/admin-order-history.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { OrderSuccessComponent } from './component/order-success/order-success.c
     MovieComponent,
     CartComponent,
     PaymentComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    AdminOrderHistoryComponent
   ],
   imports: [
     BrowserModule,

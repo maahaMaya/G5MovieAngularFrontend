@@ -21,6 +21,6 @@ export class OrderedService {
   }
 
   public getAllOrder(): Observable<Ordered[]> {
-    return this.httpClient.get<Ordered[]>(`${this.baseURL}/viewAllOrders}`);
+    return this.httpClient.get<Ordered[]>(`${this.baseURL}/viewAllOrders`);
   }
 }

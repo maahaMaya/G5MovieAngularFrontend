@@ -25,8 +25,8 @@
             </button>
           </li>
           <li class="nav-item">
-            <button class="btn bthHead" routerLink="/managePurchase">
-              Manage Purchases
+            <button class="btn bthHead" routerLink="/viewAllOrder">
+              view Purchases
             </button>
           </li>
           <li class="nav-item">
@@ -89,11 +89,11 @@
           </div>
           <!-- Modal body -->
           <div class="modal-body">
-            <div *ngIf="activeOrders != 0">
+            <div *ngIf="activeOrders != null">
               <table class="table">
                 <thead class="thead-#bf1e2e">
                   <tr>
-                    <th>movie Name</th>
+                    <th>Order Id</th>
                     <th>Quantity</th>
                     <th>Cost</th>
                     <th>Purchase Data</th>
@@ -101,17 +101,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- <tr *ngFor="let pur of activeOrders">
-                    <td>{{ pur.productname }}</td>
-                    <td>{{ pur.quantity }}</td>
-                    <td>{{ pur.totalcost }}</td>
-                    <td>{{ pur.dop }}</td>
-                    <td>{{ pur.transactionid }}</td>
-                  </tr> -->
+                  <tr *ngFor="let order of activeOrders">
+                    <td>{{ order.oid }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>{{ order.currentDate }}</td>
+                    <td>{{ order.transactionId }}</td>
+                </tr>
                 </tbody>
               </table>
             </div>
-            <div *ngIf="activeOrders == 0">
+            <div *ngIf="activeOrders == null">
               <h5 class="text-center text-danger">No Previous orders</h5>
             </div>
           </div>

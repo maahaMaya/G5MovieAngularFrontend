@@ -81,7 +81,7 @@ export class AdminMoviesComponent implements OnInit {
     this.movieModelObject.movieImagePath = this.formValue.value.movieImagePath;
     this.movieService.addMovie(this.movieModelObject).subscribe(
       (res) => {
-        alert('movuct Added Successfully');
+        alert('Movie Added Successfully');
         let ref = document.getElementById('cancel');
         ref?.click();
         this.formValue.reset();
@@ -133,7 +133,7 @@ export class AdminMoviesComponent implements OnInit {
     this.movieService.updateMovie(this.movieModelObject)
       .subscribe(
         (res) => {
-          alert('movuct Updated Successfully');
+          alert('Movie Updated Successfully');
           //
           let ref = document.getElementById('cancel');
           ref?.click();
@@ -150,7 +150,7 @@ export class AdminMoviesComponent implements OnInit {
   deleteMovie(movie: any) {
     this.movieService.deleteMovie(movie.movieId).subscribe(
       (res) => {
-        alert('movuct Deleted');
+        alert('Movie Deleted');
         this.getMovies();
       },
       (err) => {

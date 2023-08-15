@@ -7,6 +7,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CartComponent } from './component/cart/cart.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { OrderSuccessComponent } from './component/order-success/order-success.component';
+import { AdminOrderHistoryComponent } from './component/admin-order-history/admin-order-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'movie', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'orderedSuccess', component: OrderSuccessComponent },
   { path: 'admin', component: AdminLoginComponent },
   { path: 'adminMovies', component: AdminMoviesComponent },
-  { path: 'manageCustomer', component: AdminCustomerComponent }
+  { path: 'manageCustomer', component: AdminCustomerComponent },
+  { path: 'viewAllOrder', component: AdminOrderHistoryComponent }
 ];
 
 @NgModule({

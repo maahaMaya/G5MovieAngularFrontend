@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/model/customer';
+import { Ordered } from 'src/app/model/ordered';
 import { CustomerService } from 'src/app/service/customer.service';
+import { OrderedService } from 'src/app/service/ordered.service';
 
 @Component({
   selector: 'app-admin-customer',
@@ -11,12 +13,12 @@ import { CustomerService } from 'src/app/service/customer.service';
 export class AdminCustomerComponent implements OnInit {
   searchKey: string = '';
   public allCustomers: Customer[] = [];
-  activeOrders = 0;
-  //public activeOrders: Purchase[] = [];
+  activeOrderss? = 0;
+  activeOrders: Ordered[] = [];
 
   constructor(
     private customerService: CustomerService,
-    //private purchaseService: PurchaseService,
+    private orderService: OrderedService,
     private router: Router
   ) {}
 
@@ -45,10 +47,11 @@ export class AdminCustomerComponent implements OnInit {
     }
   }
 
-  getActiveOrders(email: string) {
-    // this.purchaseService.getCustomerOrders(email).subscribe((data) => {
-    //   this.activeOrders = data;
-    // });
+  getActiveOrders(emailId: string) {
+    this.orderService.getCustomerOrder(emailId).subscribe((data) => {
+      this.activeOrders = data;
+      console.log(data)
+    })
   }
 
   deleteCustomer(email: string) {
