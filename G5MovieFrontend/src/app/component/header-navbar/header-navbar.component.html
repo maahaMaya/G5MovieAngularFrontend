@@ -11,12 +11,12 @@
 
             <!-- Customer Before Login -->
             <div *ngIf="customerLoginMessage == 0" class="text-right" style="margin-right: -5vw;">
-                <!-- Login -->
+                <!-- Register -->
                 <button class="btn btnMain" type="button" data-toggle="modal" data-target="#registerModal"
                     id="custRegister">
                     <img src="../../assets/images/edit.png" width="30px" height="30px" />
                 </button>
-                <!-- Register -->
+                <!-- Login -->
                 <button class="btn btnMain" type="button" data-toggle="modal" data-target="#loginModal" id="custLogin">
                     <img src="../../assets/images/login.png" width="30px" height="30px" />
                 </button>
@@ -29,6 +29,12 @@
                 <button class="btn btnMain" (click)="getActiveOrders()" type="button" data-toggle="modal"
                     data-target="#activeOrders">
                     <img src="../../assets/images/customerOrders.png" width="40px" height="40px" />
+                </button>
+
+                <!-- Update password -->
+                <button *ngIf="customerLoginMessage == 1" class="btn cart" id="cart" type="button" data-toggle="modal"
+                    data-target="#updatePasswordModal">
+                    <mat-icon style="font-size: 29px; color: rgb(236, 242, 243)">perm_identity</mat-icon>
                 </button>
 
                 <!-- Connect To Cart -->
@@ -77,6 +83,46 @@
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" id="loginSubmit" class="btn btn-default" style="width: 80%;">
                             Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer update Password -->
+    <div class="modal fade modal_css" id="updatePasswordModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 20vh;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">User Operations</h4>
+                    <button type="button" class="close" id="Ucancel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p *ngIf="message != ''">{{ message }}</p>
+                <form (ngSubmit)="updatePassword()">
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-3">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            &nbsp;
+                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                            <input [(ngModel)]="customerUpdateData.password" name="password" type="password"
+                                id="defaultForm-pass" class="form-control validate" placeholder="Enter  Password" />
+                        </div>
+
+                        <div class="md-form mb-3">
+                            <i class="fas fa-lock prefix grey-text"></i>
+                            &nbsp;
+                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                            <input [(ngModel)]="customerUpdatePasswordData.confirmPassword" name="password" type="password"
+                                id="defaultForm-pass" class="form-control validate" placeholder="Enter Confirm Password" />
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" id="updatePassword" class="btn btn-default" style="width: 80%;">
+                            Change Password
                         </button>
                     </div>
                 </form>

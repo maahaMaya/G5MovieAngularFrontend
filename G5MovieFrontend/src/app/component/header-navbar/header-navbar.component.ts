@@ -25,6 +25,16 @@ export class HeaderNavbarComponent implements OnInit {
     emailId: '',
     password: ''
   };
+
+  customerUpdateData = {
+    emailId: '',
+    password: ''
+  };
+
+  customerUpdatePasswordData = {
+    confirmPassword: ''
+  };
+
   movieList: any;
   cart: Cart = new Cart(0, 1, 0, new Movie(1, 'Movie Name', 'Description', 'Duration', 10 , 100, 'Available',  'Available',true));
   products: Cart[] = [];
@@ -104,6 +114,7 @@ export class HeaderNavbarComponent implements OnInit {
       if (this.auth === true) {
         this.customerLoginMessage = 1;
         this.customerName = this.customerLoginData.emailId;
+        this.customerUpdateData.emailId =  this.customerLoginData.emailId;
         sessionStorage.setItem('customerEmail', this.customerLoginData.emailId);
         let ref = document.getElementById('Lcancel');
         ref?.click();
@@ -115,10 +126,34 @@ export class HeaderNavbarComponent implements OnInit {
     });
   }
 
+  updatePassword(){
+    if (this.customerUpdateData.password.trim() === '' || this.customerUpdateData.password === null) {
+      this.message = 'Enter password';
+      return;
+    }
+    if (this.customerUpdatePasswordData.confirmPassword.trim() === '' || this.customerUpdatePasswordData.confirmPassword === null
+    ) {
+      this.message = 'Enter confirm password';
+      return;
+    }
+    if(this.customerUpdateData.password != this.customerUpdatePasswordData.confirmPassword){
+      this.message = 'Enter Same password';
+      return
+    }
+
+    console.log(this.customerUpdateData)
+    this.customerService.updateCustomerPassword(this.customerUpdateData).subscribe((data) => {
+      this.auth = data;
+      if (this.auth === true) {
+        alert("password updated successfully")
+        let ref = document.getElementById('Ucancel');
+        ref?.click();
+        this.formValue.reset();
+        this.pageRefresh();
+      } 
+    });
+  }
   CustomerLogout() {
-    // this.cartService.deleteAllCart().subscribe((data) => {
-    //   console.log('cart empty');
-    // });
     sessionStorage.clear();
     this.customerLoginMessage = 0;
     this.router.navigate(['/movie']);

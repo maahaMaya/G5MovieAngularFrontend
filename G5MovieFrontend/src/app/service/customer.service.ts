@@ -33,4 +33,9 @@ export class CustomerService {
   getCustomer(emailId: string): Observable<Customer> {
     return this.httpClient.get<Customer>(`${this.baseURL}/viewBy/${emailId}`);
   }
+
+  updateCustomerPassword(customerUpdatePasswordData: any): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/updatePassword`, customerUpdatePasswordData);
+  }
+
 }
