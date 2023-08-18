@@ -19,7 +19,6 @@ export class PaymentComponent  implements OnInit{
   }
   bookMovie() {
     this.orderService.createCustomerOrder(this.emailId).subscribe(() => {
-      alert("Order Successfully....")
     })
     this.router.navigate(['/orderedSuccess']);
   }

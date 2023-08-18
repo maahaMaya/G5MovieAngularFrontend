@@ -59,10 +59,11 @@ export class AdminCustomerComponent implements OnInit {
       (data) => {
         alert('Customer Deleted');
         this.getCustomers();
-      },
-      (error) => {
-        alert("Customer can't be deleted until their orders are deleted");
       }
+      //,
+      // (error) => {
+      //   alert("Customer can't be deleted until their orders are deleted");
+      // }
     );
   }
 }
